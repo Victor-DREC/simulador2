@@ -8,8 +8,6 @@ function calcular() {
 
     let capacidadPago = calcularCapacidadPago(disponible);
     document.getElementById('spnCapacidadPago').innerText = capacidadPago.toFixed(2);
-
-
     let monto = parseInt(document.getElementById('txtMonto').value) || 0;
     let plazo = parseInt(document.getElementById('txtPlazo').value) || 0;
     let tasa = parseInt(document.getElementById('txtTasaInteres').value) || 0;
@@ -18,9 +16,12 @@ function calcular() {
     document.getElementById('spnInteresPagar').innerText = interesTotal.toFixed(2);
 
     let totalPrestamo = calcularTotalPagar(monto, interesTotal);
+    document.getElementById('spnTotalPrestamo').innerText = totalPrestamo.toFixed(2);
 
-    let componenteTotal = document.getElementById('spnTotalPrestamo');
-    if (componenteTotal) {
-        componenteTotal.innerText = totalPrestamo.toFixed(2);
+    let cuotaMensual = calcularCuotaMensual(totalPrestamo, plazo);
+
+    let componenteCuota = document.getElementById('spnCuotaMensual');
+    if (componenteCuota) {
+        componenteCuota.innerText = cuotaMensual.toFixed(2);
     }
 }
