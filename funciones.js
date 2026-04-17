@@ -18,3 +18,11 @@ function calcularTotalPagar(monto, interes) {
 
     return total;
 }
+
+function calcularCuotaMensual(total, plazoAnios) {
+    let meses = plazoAnios * 12;
+    if (meses === 0) return 0;
+    let cuota = total / meses;
+
+    return cuota;
+}
