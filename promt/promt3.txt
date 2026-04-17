@@ -1,0 +1,1 @@
+ahora quiero que mi proyecto sea responsive, que se vea bien en todos los dispositivos moviles y computadoras sin modificar los colores de mi proyecto
