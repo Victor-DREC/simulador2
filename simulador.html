@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Crédito Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>GLAMTEC - Simulador de Crédito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="simulador.css">
     <script src="funciones.js"></script>
@@ -14,14 +14,17 @@
 
     <div class="container">
         <header>
-            <i class="fas fa-calculator-alt header-icon"></i>
+            <div class="logo-container">
+                <i class="fas fa-microchip header-icon"></i>
+                <span class="brand-name">GLAMTEC</span>
+            </div>
             <h1>Simulador de Crédito</h1>
-            <p class="subtitle">Analiza tu viabilidad financiera al instante</p>
+            <p class="subtitle">Soluciones financieras inteligentes</p>
         </header>
 
         <main>
             <section class="card">
-                <h2><i class="fas fa-wallet"></i> Datos financieros</h2>
+                <h2><i class="fas fa-chart-line"></i> Tu Perfil Financiero</h2>
                 <div class="input-group">
                     <label for="txtIngresos">Ingresos Mensuales</label>
                     <div class="input-wrapper">
@@ -51,7 +54,7 @@
             </section>
 
             <section class="card secondary">
-                <h2><i class="fas fa-hand-holding-usd"></i> Solicitud de crédito</h2>
+                <h2><i class="fas fa-file-invoice-dollar"></i> Detalles del Préstamo</h2>
                 
                 <div class="input-grid">
                     <div class="input-group">
@@ -65,38 +68,38 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="txtTasaInteres">Tasa de Interés Anual (%)</label>
+                    <label for="txtTasaInteres">Tasa Anual (%)</label>
                     <input type="number" id="txtTasaInteres" placeholder="Ej: 12">
                 </div>
 
                 <div class="final-results">
                     <div class="detail">
-                        <span>Interés a pagar:</span>
+                        <span>Interés total:</span>
                         <span id="spnInteresPagar" class="value">$ 0.00</span>
                     </div>
                     <div class="detail highlight">
-                        <span>Total préstamo:</span>
+                        <span>Total a pagar:</span>
                         <span id="spnTotalPrestamo" class="value">$ 0.00</span>
                     </div>
-                    <div class="detail highlight">
+                    <div class="detail highlight-alt">
                         <span>Cuota mensual:</span>
                         <span id="spnCuotaMensual" class="value">$ 0.00</span>
                     </div>
                 </div>
 
-                <div class="status-box">
-                    <p>Estado de crédito:</p>
-                    <span id="spnEstadoCredito">ESPERANDO DATOS</span>
+                <div class="status-box" id="boxEstado">
+                    <p>Resolución GLAMTEC:</p>
+                    <span id="spnEstadoCredito">PENDIENTE DE ANÁLISIS</span>
                 </div>
             </section>
         </main>
 
         <div class="buttons">
             <button id="btnCalcularCredito" class="btn-primary" onclick="calcular()">
-                <i class="fas fa-check-circle"></i> Calcular Crédito
+                <i class="fas fa-bolt"></i> Procesar Crédito
             </button>
             <button id="btnReiniciar" class="btn-outline" onclick="location.reload()">
-                <i class="fas fa-redo"></i> Reiniciar
+                <i class="fas fa-sync-alt"></i> Nueva Simulación
             </button>
         </div>
     </div>
