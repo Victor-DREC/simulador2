@@ -258,3 +258,26 @@ input:focus {
     .app-shell { padding: 16px; }
     .result-amount { font-size: 2rem; }
 }
+
+.error-msg {
+    color: var(--danger);
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-left: 4px;
+    display: block;
+    min-height: 1em; /* Evita saltos bruscos de diseño */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.error-msg.active {
+    opacity: 1;
+}
+
+/* Efecto visual en el input cuando hay error */
+input.input-error {
+    border-color: var(--danger) !important;
+    background: rgba(255, 77, 77, 0.05) !important;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.1) !important;
+}

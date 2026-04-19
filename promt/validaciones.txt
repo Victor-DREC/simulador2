@@ -1,0 +1,20 @@
+quiero que actues como un programador experto
+
+con el HTML y CSS que te doy quiero validar inputs en JavaScript
+reglas:
+-mostrar mensaje debajo de cada input (no usar alert)
+el mensaje debe ser de color rojo y que tenga un diseño acorde al que tiene mi pagina
+
+validaciones:
+-solo numeros
+-no puede estar vacio
+-no se aceptan numeros negativos
+
+condiciones tecnicas:
+-usar los mismos IDs existentes
+-usar eventos:
+ onblur para validar cuando el usuario sale del input 
+-no modificar los IDs existentes
+-mostrar errores en un elemento debajo del input 
+
+devuelveme solo las partes que debo de agregar o modificar (HTML, CSS y JS), no todo el codigo
