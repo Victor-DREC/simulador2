@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLAMTEC - Simulador de Crédito</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>GLAMTEC - Finanzas Inteligentes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="simulador.css">
     <script src="funciones.js"></script>
@@ -12,83 +12,114 @@
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="logo-container">
-                <i class="fas fa-microchip header-icon"></i>
-                <span class="brand-name">GLAMTEC</span>
+    <div class="app-shell">
+        <header class="main-header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">GLAMTEC</span>
+                    <span class="brand-tagline">Banca Digital Inteligente</span>
+                </div>
             </div>
-            <h1>Simulador de Crédito</h1>
-            <p class="subtitle">Banca Digital Inteligente</p>
         </header>
 
-        <main>
-            <section class="card">
-                <h2><i class="fas fa-wallet"></i> Perfil Financiero</h2>
-                <div class="flex-row">
-                    <div class="input-group">
-                        <label for="txtIngresos">Ingresos</label>
-                        <input type="number" id="txtIngresos" placeholder="$ 0.00">
+        <main class="content-grid">
+            <section class="glass-card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Perfil Financiero</h3>
+                </div>
+                
+                <div class="input-stack">
+                    <div class="input-field">
+                        <label for="txtIngresos">Ingresos Mensuales</label>
+                        <div class="input-wrapper">
+                            <span class="prefix">$</span>
+                            <input type="number" id="txtIngresos" placeholder="0.00">
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="txtEgresos">Egresos</label>
-                        <input type="number" id="txtEgresos" placeholder="$ 0.00">
+                    <div class="input-field">
+                        <label for="txtEgresos">Egresos Mensuales</label>
+                        <div class="input-wrapper">
+                            <span class="prefix">$</span>
+                            <input type="number" id="txtEgresos" placeholder="0.00">
+                        </div>
                     </div>
                 </div>
 
-                <div class="results-grid">
-                    <div class="result-box">
-                        <small>Disponible</small>
-                        <span id="spnDisponible">0.00</span>
+                <div class="mini-dashboard">
+                    <div class="stat-box">
+                        <span class="stat-label">Disponible</span>
+                        <span class="stat-value" id="spnDisponible">0.00</span>
                     </div>
-                    <div class="result-box">
-                        <small>Capacidad</small>
-                        <span id="spnCapacidadPago">0.00</span>
+                    <div class="stat-box">
+                        <span class="stat-label">Capacidad de Pago</span>
+                        <span class="stat-value" id="spnCapacidadPago">0.00</span>
                     </div>
                 </div>
             </section>
 
-            <section class="card secondary">
-                <h2><i class="fas fa-hand-holding-usd"></i> Detalles del Crédito</h2>
-                
-                <div class="flex-row">
-                    <div class="input-group full-mobile">
-                        <label for="txtMonto">Monto</label>
+            <section class="glass-card accent">
+                <div class="card-header">
+                    <i class="fas fa-hand-holding-dollar"></i>
+                    <h3>Configuración de Crédito</h3>
+                </div>
+
+                <div class="input-field">
+                    <label for="txtMonto">Monto del Préstamo</label>
+                    <div class="input-wrapper main-amount">
+                        <span class="prefix">$</span>
                         <input type="number" id="txtMonto" placeholder="Ej: 5000">
                     </div>
-                    <div class="flex-row-inner">
-                        <div class="input-group">
-                            <label for="txtPlazo">Plazo (Años)</label>
-                            <input type="number" id="txtPlazo" placeholder="Ej: 2">
-                        </div>
-                        <div class="input-group">
-                            <label for="txtTasaInteres">Tasa (%)</label>
-                            <input type="number" id="txtTasaInteres" placeholder="12">
-                        </div>
+                </div>
+
+                <div class="dual-inputs">
+                    <div class="input-field">
+                        <label for="txtPlazo">Plazo (Años)</label>
+                        <input type="number" id="txtPlazo" placeholder="2">
+                    </div>
+                    <div class="input-field">
+                        <label for="txtTasaInteres">Tasa Anual (%)</label>
+                        <input type="number" id="txtTasaInteres" placeholder="12">
                     </div>
                 </div>
 
-                <div class="summary-list">
-                    <div class="summary-item"><span>Interés total:</span> <span id="spnInteresPagar">$ 0.00</span></div>
-                    <div class="summary-item bold"><span>Total préstamo:</span> <span id="spnTotalPrestamo">$ 0.00</span></div>
-                    <div class="summary-item highlight"><span>Cuota mensual:</span> <span id="spnCuotaMensual">$ 0.00</span></div>
+                <div class="status-badge">
+                    <span class="status-label">Estado de Resolución:</span>
+                    <span id="spnEstadoCredito" class="status-value">ESPERANDO DATOS</span>
                 </div>
+            </section>
 
-                <div class="status-container">
-                    <p>Resolución GLAMTEC:</p>
-                    <span id="spnEstadoCredito">ESPERANDO DATOS</span>
+            <section class="results-card">
+                <div class="main-result">
+                    <span class="result-label">Cuota Mensual Estimada</span>
+                    <span class="result-amount" id="spnCuotaMensual">$ 0.00</span>
+                </div>
+                
+                <div class="breakdown">
+                    <div class="breakdown-item">
+                        <span>Intereses</span>
+                        <span id="spnInteresPagar">$ 0.00</span>
+                    </div>
+                    <div class="breakdown-item total">
+                        <span>Total a Pagar</span>
+                        <span id="spnTotalPrestamo">$ 0.00</span>
+                    </div>
                 </div>
             </section>
         </main>
 
-        <div class="actions">
-            <button id="btnCalcularCredito" class="btn-main" onclick="calcular()">
-                <i class="fas fa-bolt"></i> Calcular
+        <footer class="actions-bar">
+            <button id="btnReiniciar" class="btn-secondary" onclick="location.reload()" title="Reiniciar">
+                <i class="fas fa-arrow-rotate-left"></i>
             </button>
-            <button id="btnReiniciar" class="btn-alt" onclick="location.reload()">
-                <i class="fas fa-undo"></i>
+            <button id="btnCalcularCredito" class="btn-primary" onclick="calcular()">
+                <span>Calcular Crédito</span>
+                <i class="fas fa-bolt"></i>
             </button>
-        </div>
+        </footer>
     </div>
 
 </body>

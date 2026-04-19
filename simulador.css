@@ -1,140 +1,260 @@
 :root {
-    --turquesa: #00ced1;
-    --turquesa-dark: #008b8b;
-    --turquesa-soft: #f0fdfd;
-    --navy: #1a2a2a;
-    --bg: #f4f8f8;
+    --primary: #00f2ea;
+    --primary-dark: #00d1ca;
+    --bg-dark: #0a0f12;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --text-main: #ffffff;
+    --text-dim: #94a3b8;
+    --accent-gradient: linear-gradient(135deg, #00f2ea 0%, #007adf 100%);
+    --danger: #ff4d4d;
+    --success: #00ff88;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+}
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--bg);
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at top right, #1a2a2a, #0a0f12);
+    color: var(--text-main);
     margin: 0;
-    padding: 1rem;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-.container {
+.app-shell {
     width: 100%;
-    max-width: 480px;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0 20px 40px rgba(0, 139, 139, 0.1);
+    max-width: 440px;
+    padding: 24px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Header */
-header { text-align: center; margin-bottom: 2rem; }
-.brand-name { font-size: 1.6rem; font-weight: 800; color: var(--navy); letter-spacing: 2px; }
-.header-icon { color: var(--turquesa); font-size: 1.8rem; }
-h1 { font-size: 1.1rem; color: var(--turquesa-dark); margin: 5px 0 0; }
-.subtitle { font-size: 0.8rem; color: #8da3a3; }
-
-/* Flexbox y Grid para Responsividad */
-.flex-row {
-    display: flex;
-    flex-wrap: wrap; /* CRÍTICO: Baja los elementos si no caben */
-    gap: 1rem;
-    margin-bottom: 1rem;
+.main-header {
+    margin-bottom: 32px;
+    text-align: left;
 }
 
-.input-group {
-    flex: 1 1 180px; /* Base de 180px, crece si hay espacio */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.flex-row-inner {
+.brand-icon {
+    width: 45px;
+    height: 45px;
+    background: var(--accent-gradient);
+    border-radius: 12px;
     display: flex;
-    gap: 1rem;
-    flex: 1 1 180px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 8px 20px rgba(0, 242, 234, 0.3);
+}
+
+.brand-name {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brand-tagline {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+/* Cards */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Inputs */
+.input-field { margin-bottom: 16px; }
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.prefix {
+    position: absolute;
+    left: 16px;
+    color: var(--primary);
+    font-weight: 600;
 }
 
 input {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #eef2f2;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px 16px;
+    padding-left: 32px;
+    color: white;
     font-size: 1rem;
-    background: #fbfdfd;
-    transition: 0.3s;
+    font-family: inherit;
 }
 
 input:focus {
     outline: none;
-    border-color: var(--turquesa);
-    background: #fff;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(0, 242, 234, 0.1);
 }
 
-/* Tarjetas */
-.card {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #f0f0f0;
-}
-
-.results-grid {
+.dual-inputs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 12px;
 }
 
-.result-box {
-    background: var(--turquesa-soft);
+.dual-inputs input { padding-left: 16px; }
+
+/* Dashboard & Stats */
+.mini-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.stat-box {
+    background: rgba(0, 242, 234, 0.05);
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 242, 234, 0.1);
+}
+
+.stat-label { font-size: 0.65rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700; }
+.stat-value { display: block; font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
+
+/* Status */
+.status-badge {
+    margin-top: 20px;
     padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
     text-align: center;
+    font-size: 0.85rem;
 }
 
-.result-box small { font-size: 0.7rem; font-weight: 700; color: var(--turquesa-dark); text-transform: uppercase; }
-.result-box span { display: block; font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+.status-value {
+    color: var(--primary);
+    font-weight: 800;
+    margin-left: 5px;
+}
 
-/* Totales y Estado */
-.summary-list { border-top: 1px solid #f0f0f0; padding-top: 1rem; margin-top: 1rem; }
-.summary-item { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; }
-.summary-item.highlight { color: var(--turquesa-dark); font-weight: 800; font-size: 1.1rem; }
-
-.status-container {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: var(--navy);
-    color: var(--turquesa);
-    border-radius: 1rem;
+/* Result Card */
+.results-card {
+    background: var(--accent-gradient);
+    border-radius: 24px;
+    padding: 30px;
     text-align: center;
+    color: #000;
+    box-shadow: 0 15px 30px rgba(0, 242, 234, 0.2);
+    margin-bottom: 30px;
 }
 
-#spnEstadoCredito { font-weight: 800; font-size: 1rem; display: block; }
+.result-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; opacity: 0.8; }
+.result-amount { display: block; font-size: 2.5rem; font-weight: 800; margin: 10px 0; }
 
-/* Botones Adaptables */
-.actions { display: flex; gap: 10px; }
+.breakdown {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
 
-.btn-main {
-    flex: 4;
-    background: var(--turquesa);
-    color: white;
+.breakdown-item span { display: block; font-size: 0.75rem; font-weight: 600; }
+.breakdown-item span:last-child { font-size: 0.95rem; font-weight: 800; }
+
+/* Buttons */
+.actions-bar {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primary {
+    flex: 1;
+    background: var(--text-main);
+    color: var(--bg-dark);
     border: none;
-    padding: 1rem;
-    border-radius: 1rem;
+    padding: 18px;
+    border-radius: 18px;
     font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     cursor: pointer;
 }
 
-.btn-alt {
-    flex: 1;
-    background: transparent;
-    border: 2px solid var(--turquesa);
-    color: var(--turquesa);
-    border-radius: 1rem;
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
 }
 
-/* Ajustes específicos para móviles pequeños */
+.btn-secondary {
+    width: 60px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 18px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsividad */
 @media (max-width: 400px) {
-    .container { padding: 1.2rem; }
-    .flex-row-inner { flex: 1 1 100%; } /* En móviles muy pequeños, pone plazo y tasa uno bajo el otro */
-    .results-grid { grid-template-columns: 1fr; }
+    .app-shell { padding: 16px; }
+    .result-amount { font-size: 2rem; }
 }
