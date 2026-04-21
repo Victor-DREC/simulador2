@@ -16,7 +16,7 @@
         <header class="main-header">
             <div class="brand">
                 <div class="brand-icon">
-                    <i class="fas fa-microchip"></i>
+                    <img src="logo.png" alt="A&C GlamTech" class="bank-logo">
                 </div>
                 <div class="brand-text">
                     <span class="brand-name">GLAMTEC</span>
@@ -41,22 +41,45 @@
                         </div>
                         <span class="error-msg" id="err-txtIngresos"></span>
                     </div>
+
                     <div class="input-field">
-                        <label for="txtEgresos">Egresos Mensuales</label>
+                        <label for="txtArriendo">Arriendo</label>
+                        <div class="input-wrapper">
+                            <span class="prefix">$</span>
+                            <input type="number" id="txtArriendo" placeholder="0.00" onblur="validarInput(this)">
+                        </div>
+                        <span class="error-msg" id="err-txtArriendo"></span>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="txtEgresos">Alimentación</label>
                         <div class="input-wrapper">
                             <span class="prefix">$</span>
                             <input type="number" id="txtEgresos" placeholder="0.00" onblur="validarInput(this)">
                         </div>
                         <span class="error-msg" id="err-txtEgresos"></span>
                     </div>
+
+                    <div class="input-field">
+                        <label for="txtVarios">Varios</label>
+                        <div class="input-wrapper">
+                            <span class="prefix">$</span>
+                            <input type="number" id="txtVarios" placeholder="0.00" onblur="validarInput(this)">
+                        </div>
+                        <span class="error-msg" id="err-txtVarios"></span>
+                    </div>
                 </div>
 
                 <div class="mini-dashboard">
                     <div class="stat-box">
+                        <span class="stat-label">Total Gastos</span>
+                        <span class="stat-value" id="spnTotalEgresos">0.00</span>
+                    </div>
+                    <div class="stat-box">
                         <span class="stat-label">Disponible</span>
                         <span class="stat-value" id="spnDisponible">0.00</span>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box" style="grid-column: span 2; margin-top: 10px;">
                         <span class="stat-label">Capacidad de Pago</span>
                         <span class="stat-value" id="spnCapacidadPago">0.00</span>
                     </div>
@@ -129,3 +152,4 @@
 
 </body>
 </html>
+

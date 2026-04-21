@@ -1,14 +1,15 @@
 function calcular() {
     const campos = [
         document.getElementById('txtIngresos'),
+        document.getElementById('txtArriendo'),
         document.getElementById('txtEgresos'),
+        document.getElementById('txtVarios'),
         document.getElementById('txtMonto'),
         document.getElementById('txtPlazo'),
         document.getElementById('txtTasaInteres')
     ];
 
     let formularioValido = true;
-
     campos.forEach(input => {
         if (!validarInput(input)) {
             formularioValido = false;
@@ -18,13 +19,21 @@ function calcular() {
     if (!formularioValido) return;
 
     let ingresos = parseFloat(document.getElementById('txtIngresos').value) || 0;
-    let egresos = parseFloat(document.getElementById('txtEgresos').value) || 0;
+    
+    // Suma de los tres campos de gastos
+    let arriendo = parseFloat(document.getElementById('txtArriendo').value) || 0;
+    let alimentacion = parseFloat(document.getElementById('txtEgresos').value) || 0;
+    let varios = parseFloat(document.getElementById('txtVarios').value) || 0;
+    let totalEgresos = arriendo + alimentacion + varios;
+
     let monto = parseFloat(document.getElementById('txtMonto').value) || 0;
     let plazo = parseInt(document.getElementById('txtPlazo').value) || 0;
     let tasa = parseFloat(document.getElementById('txtTasaInteres').value) || 0;
 
+    // Mostrar el total sumado en el dashboard
+    document.getElementById('spnTotalEgresos').innerText = totalEgresos.toFixed(2);
 
-    let disponible = calcularDisponible(ingresos, egresos);
+    let disponible = calcularDisponible(ingresos, totalEgresos);
     document.getElementById('spnDisponible').innerText = disponible.toFixed(2);
 
     let capacidadPago = calcularCapacidadPago(disponible);
@@ -39,7 +48,6 @@ function calcular() {
     let cuotaMensual = calcularCuotaMensual(totalPrestamo, plazo);
     document.getElementById('spnCuotaMensual').innerText = cuotaMensual.toFixed(2);
 
-
     let esAprobado = aprobarCredito(capacidadPago, cuotaMensual);
     let lblEstado = document.getElementById('spnEstadoCredito');
 
@@ -52,7 +60,6 @@ function calcular() {
     }
 }
 
-
 function validarInput(input) {
     const errorSpan = document.getElementById(`err-${input.id}`);
     if (!errorSpan) return true; 
@@ -62,11 +69,9 @@ function validarInput(input) {
 
     if (valor === "") {
         mensaje = "Este campo es obligatorio.";
-    } 
-    else if (parseFloat(valor) < 0) {
+    } else if (parseFloat(valor) < 0) {
         mensaje = "No se aceptan valores negativos.";
-    }
-    else if (isNaN(valor)) {
+    } else if (isNaN(valor)) {
         mensaje = "Ingresa un número válido.";
     }
 

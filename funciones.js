@@ -13,7 +13,7 @@ function calcularInteresSimple(monto, tasa, plazoAnios) {
 }
 
 function calcularTotalPagar(monto, interes) {
-    const IMPUESTO_SOLCA = 100;
+    const IMPUESTO_SOLCA = 100; // Valor constante según tu código original
     let total = monto + interes + IMPUESTO_SOLCA;
 
     return total;
@@ -26,6 +26,7 @@ function calcularCuotaMensual(total, plazoAnios) {
 
     return cuota;
 }
+
 function aprobarCredito(capacidadPago, cuotaMensual) {
     if (capacidadPago > cuotaMensual) {
         return true;
